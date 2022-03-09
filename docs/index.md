@@ -1,3 +1,7 @@
+# はじめに
+　このページでは当サークルで用いているmbedの初歩の解説をします。詳しくは後述しますが、mbedとはNucleo等のマイコンのプログラミング環境です。とはいえ、C++で記述するので、C++の基本（クラスが理解できる程度）が備わっていれば、学ぶべきは「**どんなクラスがあるか**」「**そのクラスの仕様はどんな感じか**」といった内容です。
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/long-paddy-field/Mbed_Lesson/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
