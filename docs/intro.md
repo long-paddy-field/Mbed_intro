@@ -34,3 +34,4 @@ PlatformIOは、いろいろなフレームワークを**同じ開発環境**で
 はすでに完了しているものとします。
 
 ## PlatformIOの導入
+[こちら](https://zadig.akeo.ie/)
