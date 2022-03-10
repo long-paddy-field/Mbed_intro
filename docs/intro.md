@@ -5,7 +5,7 @@
 　マイコンとは、ロボット等を作るときに使われる小さなコンピュータです。よく使われるものでは、ArduinoやNucleoが挙げられます。ロ技研ではNucleoシリーズを用いています。以下の写真は「Nucleo F303K8」というマイコンで、Nucleoシリーズの中でもロ技研でよく使われているマイコンの一つです。
 
 <div style="text-align: center;">
-<image src = "/img/sample_micom.JPG" alt = "sample_F303K8" title = "sample_F303K8"/>
+<image src = "/img/sample_micom.jpg" alt = "sample_F303K8" title = "sample_F303K8"/>
 </div>
 
 マイコンは様々な電子部品がついていますが、注目すべきは上図の3つです。それぞれ説明します。
