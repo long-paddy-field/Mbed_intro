@@ -3,7 +3,7 @@
 
 # 目次
 - 第0話　[マイコンプログラミングとは/環境構築](/intro.md)
-- 第1話　DigitalOut
+- 第1話　[DigitalOutでLチカしよう/プロジェクトの作り方](/DigitalOut_explain.md)
 - 第2話　DigitalIn
 - 第3話　PwmOut
 - 第4話　AnalogIn
