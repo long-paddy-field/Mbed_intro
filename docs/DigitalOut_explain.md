@@ -28,9 +28,31 @@
 </div>
 
 ## DigitalOutでLチカさせよう
-一番初めのプログラムとして、マイコン上に搭載されているLEDを光らせてみましょう。
-``` Lesson1_DigitalOut.cpp
+　一番初めのプログラムとして、マイコン上に搭載されているLEDを光らせてみましょう。
+以下のようなプログラムを作成します。
+``` cpp
+#include <mbed.h>
 
+DigitalOut myled(LED1);
+
+int main() {
+  // put your setup code here, to run once:
+  myled.write(1);
+
+  while(1) {
+    // put your main code here, to run repeatedly:
+  
+  }
+}
 ```
+出来上がったら、ビルドして書き込みましょう。
+下の画像のようにUSB経由でPCにつなぎます。
+<div style="text-align: center;">
+<image src = "./img/DO_img1.jpg" alt = "Prj_intro" title = "Prj_intro" width = "100" height = "150"/>
+</div>
+ビルドボタンと書き込みボタンは下画像の位置にあります。
+<div style="text-align: center;">
+<image src = "./img/kakikomi.png" alt = "Prj_intro" title = "Prj_intro" width = "400" height = "270"/>
+</div>
 
 [^1]: PlatformIOは**日本語を含むアドレスにアクセスできない**ので、"C:\Users\username\Onedrive\ドキュメント"みたいな場所にファイルを作るとうまく実行できない場合があります。
