@@ -114,7 +114,7 @@ wait_us(1000000);
 ## 練習問題
 先ほどのプログラムを改造して、マイコン上のLEDが1 秒周期で点滅するプログラムを作成してください。
 
-<details><summary>プログラミング例</summary><div>
+<details><summary>プログラミング例</summary>
 
 ``` cpp
 #include <mbed.h>
@@ -134,7 +134,7 @@ int main() {
 ```
 点滅のような繰り返しのある処理は、**ループ処理**を使えばいいのでしたね。今回は無限に点滅させたいので、`while`分を使うと手っ取り早いです。点滅周期が1 秒なので、0.5 秒毎に点灯と消灯を交互に繰り返せばよいでしょう。
 
-</div></details>
+</details>
 
 以上、DigitalOutについて要点だけ説明しました。さらに詳しく知りたい人は[こちら](https://os.mbed.com/docs/mbed-os/v6.15/apis/digitalout.html)からリファレンスマニュアル[^2]を読んでください。
 
