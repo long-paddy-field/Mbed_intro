@@ -4,7 +4,7 @@
 # 目次
 - 第0話　[マイコンプログラミングとは/環境構築](/intro.md)
 - 第1話　[DigitalOutでLチカしよう/プロジェクトの作り方](./DigitalOut_explain.md)
-- 第2話　[DigitalIn](./DigitalIn_explain.md)
+- 第2話　[DigitalInでスイッチを使おう](./DigitalIn_explain.md)
 - 第3話　[PwmOut](./PwmOut_explain.md)
 - 第4話　[AnalogIn](./AnalogIn_explain.md)
 - 第5話　[割り込み処理](./Warikomi_explain.md)
