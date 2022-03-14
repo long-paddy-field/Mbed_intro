@@ -52,7 +52,7 @@ int main() {
 出来上がったら、ビルドして書き込みましょう。
 下の画像のようにUSB経由でPCにつなぎます。
 <div style="text-align: center;">
-<image src = "./img/DO_img1.jpg" alt = "Prj_intro" title = "Prj_intro" width = "100" height = "150"/>
+<image src = "./img/DO_img1.jpg" alt = "DO_img1" title = "DO_img1" width = "100" height = "150"/>
 </div>
 ビルドボタンと書き込みボタンは下画像の位置にあります。
 <div style="text-align: center;">
@@ -61,7 +61,7 @@ int main() {
 
 プログラムが正常に実行されると、下の画像のように緑色のLEDが1 秒間点灯するはずです。
 <div style="text-align: center;">
-<image src = "./img/DO_img2.jpg" alt = "Prj_intro" title = "Prj_intro" width = "100" height = "150"/>
+<image src = "./img/DO_img2.jpg" alt = "DOj_img2" title = "DOj_img2" width = "100" height = "150"/>
 </div>
 
 ## 解説：DigitalOut
