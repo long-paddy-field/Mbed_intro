@@ -114,14 +114,9 @@ wait_us(1000000);
 ## 練習問題
 先ほどのプログラムを改造して、マイコン上のLEDが1 秒周期で点滅するプログラムを作成してください。
 
-<details><summary>にゃーん</summary>
-**ねこ**
-</details>
+[解答例はこちら](./DigitalOut_Ans.md)
 
-
-<details>
-
-<summary>プログラミング例</summary>
+<details><summary>解答例だにゃ</summary>
 
 ``` cpp
 #include <mbed.h>
