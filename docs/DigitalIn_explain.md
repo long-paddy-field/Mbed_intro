@@ -32,14 +32,12 @@
 ``` cpp
 #include <mbed.h>
 
-DigitalIn Sw1(PA_1);
-DigitalOut myled(LED1);
+DigitalIn Sw1(PA_0);
+DigitalOut myled(PB_1);
 
-int main() 
-{
+int main() {
   // put your setup code here, to run once:
-  while(1) 
-  {
+  while(1) {
     if(Sw1.read())
     {
       myled = 1;
@@ -51,7 +49,7 @@ int main()
   }
 }
 ```
-さて、実行する前にブレッドボードで回路を組みましょう。以下の写真のようにブレッドボードにマイコン・LED・タクトスイッチを設置します。
+
 
 回路ができたら、さっそくマイコンにプログラムを書き込んで実行しましょう。正常に動作していれば、ボタンを押している間だけLEDが光るはずです。
 
