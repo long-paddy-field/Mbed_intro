@@ -40,7 +40,7 @@ DigitalOut myled(LED1);
 int main() {
   // put your setup code here, to run once:
   while(1) {
-    if(Sw1.read())
+    if(Sw1.read() == 0)
     {
       myled = 1;
     }else{
@@ -128,12 +128,12 @@ int main() {
 #include <mbed.h>
 
 DigitalIn Sw1(PA_0);
-DigitalOut myled(PB_1);
+DigitalOut myled(LED1);
 
 int main() {
   // put your setup code here, to run once:
   myled = 0;
-  while(!Sw1.read()){};
+  while(Sw1.read()){};
 
   while(1) {
     myled = 1;
@@ -148,8 +148,9 @@ int main() {
 「スイッチが押されていない」という条件での無限ループを点滅の処理の前にはさめば、スイッチが押されるまで待機させることができます。
 
 </details>
-　　
-というわけで、DigitalInについての要点の説明でした。レファレンスは[こちら](https://os.mbed.com/docs/mbed-os/v6.15/apis/digitalin.html)からアクセスできます。
+
+
+というわけで、DigitalInについての要点の説明でした。レファレンスは [こちら](https://os.mbed.com/docs/mbed-os/v6.15/apis/digitalin.html)からアクセスできます。
 
   
 
