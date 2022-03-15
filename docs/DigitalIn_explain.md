@@ -1,5 +1,5 @@
 [ホームに戻る](./index.md)  
-←　[第１話](DigitalOut_explain.md)　｜　[第3話](DigitalIn_explain.md)　→
+←　[第１話](DigitalOut_explain.md)　｜　[第3話](PwmOut_explain.md)　→
 
 [前回の記事](DigitalOut_explain.md)では、`DigitalOut`クラスを用いてLEDを点滅させました。今回は、スイッチ等に用いられている`DigitalIn`を使い方について解説します。その例として、「スイッチを押すとLEDが光る装置」を作ってみましょう。
 
@@ -24,7 +24,7 @@
 
 
 ## タクトスイッチに抵抗がついている理由
-電子工作初心者の人には、タクトスイッチの配線がやや奇妙に見えるかもしれません（筆者は初めて見たときそう思いました）。タクトスイッチの配線についている抵抗は、「**プルアップ抵抗**」と呼ばれています。これの働きについて、もう一つの方式である**プルダウン抵抗**と併せて理解する必要があります。
+電子工作初心者の人には、タクトスイッチの配線がやや奇妙に見えるかもしれません（筆者は初めて見たときそう思いました）。タクトスイッチの配線についている抵抗は、「**プルダウン抵抗**」と呼ばれています。これの働きについて、もう一つの方式である**プルアップ抵抗**と併せて理解する必要があります。
 外部サイトにとても詳しい説明があるので、今回はそれにお任せしようと思います。
   [リンクはこちら](https://voltechno.com/blog/pullup-pulldown/)
 
@@ -35,7 +35,7 @@
 #include <mbed.h>
 
 DigitalIn Sw1(PA_0);
-DigitalOut myled(PB_1);
+DigitalOut myled(LED1);
 
 int main() {
   // put your setup code here, to run once:
@@ -150,6 +150,8 @@ int main() {
 </details>
 　　
 というわけで、DigitalInについての要点の説明でした。レファレンスは[こちら](https://os.mbed.com/docs/mbed-os/v6.15/apis/digitalin.html)からアクセスできます。
+
+  
 
 ←　[第１話](DigitalOut_explain.md)　｜　[第3話](DigitalIn_explain.md)　→
 
