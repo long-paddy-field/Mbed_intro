@@ -1,4 +1,4 @@
-[ホームに戻る](./index.md)
+[ホームに戻る](./index.md)  
 ←　[第１話](DigitalOut_explain.md)　｜　[第3話](DigitalIn_explain.md)　→
 
 [前回の記事](DigitalOut_explain.md)では、`DigitalOut`クラスを用いてLEDを点滅させました。今回は、スイッチ等に用いられている`DigitalIn`を使い方について解説します。その例として、「スイッチを押すとLEDが光る装置」を作ってみましょう。
@@ -18,13 +18,15 @@
 ## 配線の様子
 以下の画像を参考にしてください
 
+<div style="text-align: center;">
+<image src = "./img/kairo.jpg" alt = "Prj_intro" title = "Prj_intro" width = "400" height = "200"/>
+</div>
+
+
 ## タクトスイッチに抵抗がついている理由
-電子工作初心者の人には、タクトスイッチの配線がやや奇妙に見えるかもしれません（筆者は初めて見たときそう思いました）。タクトスイッチの配線についている抵抗は、「**プルアップ抵抗**」と呼ばれています。これの働きについて、もう一つの方式である**プルダウン抵抗**と併せて紹介します。
-
-### 抵抗を使わずタクトスイッチをつなぐと...
-確かに抵抗を使わずとも、電源とピンをスイッチをはさんでつなげば機能しそうです。しかし、この状態では、スイッチが入っていないときに、ピンが**電源にもグラウンドにもつながっていません**。この状態ではピンの電圧がノイズの影響を受けて安定せず、誤作動の原因になりえます。そこで考え出されたのが、**プルアップ抵抗**と**プルダウン抵抗**なのです。
-
-### プルアップ抵抗・プルダウン抵抗の回路図
+電子工作初心者の人には、タクトスイッチの配線がやや奇妙に見えるかもしれません（筆者は初めて見たときそう思いました）。タクトスイッチの配線についている抵抗は、「**プルアップ抵抗**」と呼ばれています。これの働きについて、もう一つの方式である**プルダウン抵抗**と併せて理解する必要があります。
+外部サイトにとても詳しい説明があるので、今回はそれにお任せしようと思います。
+  [リンクはこちら](https://voltechno.com/blog/pullup-pulldown/)
 
 # DigitalInでスイッチを使ってみよう
 適当な名前のプロジェクトを作り、以下のソースコードを打ち込んでください。プロジェクトの作り方は[前回](DigitalOut_explain.md)紹介済みなので、忘れた人は確認してください。
@@ -51,8 +53,13 @@ int main() {
 ```
 
 
-回路ができたら、さっそくマイコンにプログラムを書き込んで実行しましょう。正常に動作していれば、ボタンを押している間だけLEDが光るはずです。
+さっそくマイコンにプログラムを書き込んで実行しましょう。正常に動作していれば、ボタンを押している間だけLEDが光るはずです。
 
+<div style="text-align: center;">
+<image src = "./img/testrun1.GIF" alt = "Prj_intro" title = "Prj_intro" width = "400" height = "300"/>
+</div>
+
+  
 ## 解説：DigitalIn
 前回と同じようにソースコードの解説をしていきます。前回説明した分は飛ばします。
 
@@ -80,8 +87,69 @@ while(1)
 ```
 while文の最後に`wait_us`を入れてあります。これによって、1 msに一回スイッチが押されているか判定&処理を行うようにしています。このような処理を行う周期のことを**制御周期**といいます[^2]。一般に制御周期は速いほど良いですが、速すぎると処理が追い付かなくなるので、そのプログラムごとに良い塩梅を見つけていくことになります。
 
+## 練習問題
+LEDが普段ついていて、ボタンを押している間だけLEDが消えるプログラムを作ってください。
 
+<details>
+<summary>解答例はこちら</summary>
 
+``` cpp
+#include <mbed.h>
+
+DigitalIn Sw1(PA_0);
+DigitalOut myled(PB_1);
+
+int main() {
+  // put your setup code here, to run once:
+  while(1) {
+    if(!Sw1.read())
+    {
+      myled = 1;
+    }else{
+      myled = 0;
+    }
+    wait_us(1000);
+    // put your main code here, to run repeatedly:
+  }
+}
+```
+
+先ほどの例の`if`文の真偽を反転させれば良いでしょう。
+
+</details>
+
+　　
+## 発展問題
+ボタンを押すとLEDが 1 秒周期で点滅を開始するようなプログラムを作ってください。
+
+<details><summary>解答例はこちら</summary>
+
+``` cpp
+#include <mbed.h>
+
+DigitalIn Sw1(PA_0);
+DigitalOut myled(PB_1);
+
+int main() {
+  // put your setup code here, to run once:
+  myled = 0;
+  while(!Sw1.read()){};
+
+  while(1) {
+    myled = 1;
+    wait_us(500000);
+    myled = 0;
+    wait_us(500000);
+    // put your main code here, to run repeatedly:
+  }
+}
+```
+
+「スイッチが押されていない」という条件での無限ループを点滅の処理の前にはさめば、スイッチが押されるまで待機させることができます。
+
+</details>
+　　
+というわけで、DigitalInについての要点の説明でした。レファレンスは[こちら](https://os.mbed.com/docs/mbed-os/v6.15/apis/digitalin.html)からアクセスできます。
 
 ←　[第１話](DigitalOut_explain.md)　｜　[第3話](DigitalIn_explain.md)　→
 

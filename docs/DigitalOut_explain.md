@@ -1,4 +1,4 @@
-[ホームに戻る](index.md)
+[ホームに戻る](index.md)  
 ←　[第０話](./intro.md)　｜　[第２話](./DigitalIn_explain.md)　→
 
 # プロジェクトを作ろう/DigitalOutでLチカしよう
