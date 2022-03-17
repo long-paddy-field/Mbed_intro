@@ -58,8 +58,8 @@ PWM出力について詳しく説明します。前述の通り、Pwm出力はHI
 ``` cpp
 #include <mbed.h>
 
-PwmOut speed(PA_0);
-DigitalOut dir(PA_1);
+DigitalOut dir(PA_0);
+PwmOut speed(PA_1);
 
 int main() {
   speed.period_ms(20);
@@ -117,18 +117,98 @@ speed.pulsewidth_ms(10);
 
 
 ## 練習問題１
-DCモーターで加速と減速を10秒周期で繰り返すようなプログラムを作成してください。
+DCモーターで加速と減速を10秒周期で繰り返すようなプログラムを作成してください。制御周期は1 msとします。
+duty比の最大値は 50 %としてください。回転方向はお好きにどうぞ
 
 <details><summary>解答例はこちら</summary>
 
 ``` cpp
+#include <mbed.h>
 
+DigitalOut dir(PA_0);
+PwmOut speed(PA_1);
+bool acc = true;//真なら加速　偽なら減速
+float duty = 0;
+
+int main() {
+  speed.period_ms(20);
+  speed.write(0);
+  dir.write(1);
+  
+  // put your setup code here, to run once:
+
+  while(1) {
+    if(acc)
+    {
+      duty += 0.0001;
+    }else
+    {
+      duty -= 0.0001;
+    }
+    if(duty > 0.5)
+    {
+      duty = 0.5;
+      acc = !acc;
+    }else if(duty < 0)
+    {
+      duty = 0;
+      acc = !acc;
+    }
+    speed.write(duty);
+    wait_us(1000);
+    // put your main code here, to run repeatedly:
+  }
+}
 ```
 
+加速するか減速するかを`bool`型を用いて判別しています。`write()`関数の引数は`float`型なので、float型の変数を渡すことで速度を変更できます。
 </details>
 
 # PWM出力でサーボモータを回してみよう
 では続いて、DCモータと並びよく使われるサーボモータの使い方を解説します。
 
 ## サーボモータとは
-サーボモータは、以下の写真のような形状のモータです。主に回転角や速度を正確に制御するために用いられます。
+サーボモータは、以下の写真のような形状のモータです。主に回転角や速度を正確に制御するために用いられます。ただ、高額なものを除いて、回転角が限られている（180° ~ 270°）ものがほとんどです。なので、ロボットの足回りというよりは、把持機構等で活躍します。
+
+## サーボモータの使い方
+サーボモータは、多くの場合3つのピンを回路に接続します。一つは電源入力、一つはGND、もう一つはPWM入力です。サーボモータは、 **PWM入力と回転角（回転速度ではない）が1対1対応します** 。  
+入力するPWMのパルス周期は製品ごとに異なるので、**データシートを見て確認**しましょう。今回使うSG90（下写真）は、パルス周期が20 ms、パルス幅が 0.5 ms ~ 2.4 msですね（リンクは[こちら](https://akizukidenshi.com/catalog/g/gM-08761/)）。データシートにあるように、パルス幅が0.5 msの時 -90°、2.4 msの時 90°なので、これをもとにすれば指定した角度の位置に回転させることができるでしょう。中間の角度は普通に比例配分すれば大丈夫です。
+
+<div style="text-align: center;">
+<image src = "./img/SG90_pic.jpg" alt = "Prj_intro" title = "Prj_intro" width = "600" height = "200"/>
+</div>
+
+## 練習問題２
+サーボモータを使って、ちょうど60°回転し元に戻る、という往復運動を1秒周期で繰り返すようなプログラムを作成してください。
+
+<details><summary>解答例はこちら</summary>
+
+``` cpp
+#include <mbed.h>
+
+PwmOut theta(PA_1);
+
+int main()
+{
+  theta.period_ms(20);
+
+  while(1)
+  {
+    theta.pulsewidth_ms(1.13);
+    wait_us(500000);
+    theta.pulsewidth_ms(0.5);
+    wait_us(500000)
+  }
+}
+```
+
+普通に比例配分しましょう。あなたならできるはず。
+</details>
+
+## 発展問題
+duty比の代わりに角度を指定することでサーボモータを制御できるクラスを作りましょう。
+データシートから得られる各種パラメータ（パルス周期、パルス幅の最大値・最小値）の違いに対応できるようにしてください。
+
+  
+←　[第2話](DigitalIn_explain.md)　｜　[第4話](AnalogIn_explain.md)　→  
+[ホームに戻る](./index.md)  
