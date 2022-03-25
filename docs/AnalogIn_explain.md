@@ -54,5 +54,42 @@ PhRe.read_u16();
 このように書くことで、電圧を0 ～ 1スケールではなく 0 ～ 65535 スケールの整数として読むことができます。
 float型が扱いにくいと思った方はこちらを使ってもよいでしょう。
 
+
+## 練習問題
+フォトリフレクタとモーターを動かすのに必要なものを用意して、明るいところではモーターが回り、暗いところではモーターが静止するような装置およびプログラムを作成してください。
+
+<details><summary>解答例はこちら</summary>
+まず回路は以下のようなふうに作ります。
+
+
+ソースコードは以下のようなものが考えられます。
+
+``` cpp
+#include <mbed.h>
+
+DigitalOut dir();
+PwmOut speed();
+AnalogIn PhRe();
+
+int main()
+{
+    dir.write(1);
+    speed.period_ms(20);
+    speed.write(0);
+
+    while(1)
+    {
+        if(PhRe.read() > 0.5)
+        {
+            speed.write(0.5);
+        }else{
+            speed.write(0);
+        }
+        wait_us(100000);
+    }
+}
+```
+</details>
+
 ←　[第３話](PwmOut_explain.md)　｜　[第５話](Warikomi_explain.md)　→  
 [ホームに戻る](./index.md)
