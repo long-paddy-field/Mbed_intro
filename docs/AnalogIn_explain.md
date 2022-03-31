@@ -21,6 +21,7 @@ Analog入力とは、連続的な信号（アナログ信号）を受信する�
 #include<mbed.h>
 
 AnalogIn PhRe(PA_0);
+asm(".global _printf_float");
 
 int main()
 {
@@ -42,6 +43,11 @@ int main()
 AnalogIn PhRe(PA_0);
 ```
 相変わらずのインスタンス化です。説明は省略
+
+``` cpp
+asm(".global _printf_float");
+```
+mbedでは、なぜか`printf("%f",hoge)`がうまく表示されません。それを解消するためのコードです。
 
 ``` cpp
 PhRe.read();
