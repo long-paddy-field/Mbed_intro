@@ -52,6 +52,7 @@ PlatformIOは、いろいろなフレームワークを**同じ開発環境**で
 <image src = "./img/PIO_intro2.png" alt = "sample_F303K8" title = "sample_F303K8" width = "400" height = "200"/>
 </div>
 4. アイコンが表示されたら完了です。PlatformIOでのプロジェクトの作り方は次の記事で取り上げます。
+参考: 環境構築時にトラブルがあった場合は[こちら](platformio.md)を参照してください。
 
 ## Zadigを導入
 PlatformIOで作ったプログラムをUSB経由でマイコンに書き込む時に、エラーになることがよくあります。そこで、zadigというソフトでUSBドライバの設定を変更します。
