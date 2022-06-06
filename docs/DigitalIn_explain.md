@@ -154,7 +154,7 @@ int main() {
 
   
 
-←　[第１話](DigitalOut_explain.md)　｜　[第3話](DigitalIn_explain.md)　→
+←　[第１話](DigitalOut_explain.md)　｜　[第3話](PwmOut_explain.md)　→
 
 [^1]: 具体的に何ボルトかかっているかはDigitalInでは分かりません。
 [^2]: 逆数を取って制御周波数（Hz）として考える場合もあります。
