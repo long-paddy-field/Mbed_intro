@@ -59,6 +59,10 @@ PWM出力について詳しく説明します。前述の通り、Pwm出力はHI
 ### 回路の様子
 データシートをみて、回路を組みましょう。下記写真のようになるはずです。
 
+<div style="text-align: center;">
+<image src = "./img/Motor.png" alt = "motor_intro" title = "motor_intro" width = "600"/>
+</div>
+
 ## プログラミングをしよう
 回路が組み終わったら、プログラムを書きましょう。適当にプロジェクトを作ってください。
 
